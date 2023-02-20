@@ -2,6 +2,8 @@
 
 
 #include "AlienManager.h"
+#include "Blueprint/UserWidget.h"
+#include "Blueprint/WidgetTree.h"
 
 // Sets default values
 AAlienManager::AAlienManager()
@@ -15,7 +17,7 @@ AAlienManager::AAlienManager()
 void AAlienManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -23,5 +25,15 @@ void AAlienManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AAlienManager::testFunction()
+{
+	
+}
+
+void AAlienManager::ManageAlien()
+{
+	mySpecialInput = mySpecialOutput.FromString("blah");
 }
 

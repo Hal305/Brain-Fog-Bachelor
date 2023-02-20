@@ -23,4 +23,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, BluePrintReadWrite)
+		FText mySpecialInput;
+	UPROPERTY(EditAnywhere, BluePrintReadWrite)
+		FText mySpecialOutput;
+
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+		void ManageAlien();
+
+	void testFunction();
 };
