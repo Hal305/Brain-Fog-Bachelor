@@ -24,12 +24,16 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
-		FText mySpecialInput;
+		FText playerTextInput;
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
-		FText mySpecialOutput;
+		FText alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-		FText ManageAlien(FText Response);
+		FText ManageAlien(FText playerInput);
+
+	UPROPERTY(EditAnywhere, BluePrintReadWrite)
+		class AAlienActor* currentAlien;
+	AActor* alienClone;
 
 	void testFunction();
 };

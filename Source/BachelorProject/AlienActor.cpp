@@ -27,24 +27,29 @@ void AAlienActor::Tick(float DeltaTime)
 
 }
 
-bool AAlienActor::CheckPlayerTextInput(FText input)
+bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 {
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput.ToString());
 	for (int i = 0; i < numberOfCorrectInputs; i++)
 	{
-		if (input.ToLower().EqualTo(correctInputs[i].ToLower()))
+		if (playerInput.ToLower().EqualTo(testCorrect.ToLower()))
 		{
 			phaseCount++;
 			//CorrectInputs.Empty(); //Might be done elsewhere
+			alienOutput = alienOutput.FromString("Yes!");
+			UE_LOG(LogTemp, Warning, TEXT("Input match!"));
 			return true;
 		}
 	}
 	for (int i = 0; i < numberOfSpecialInputs; i++)
 	{
-		if (input.ToLower().EqualTo(specialInputs[i].ToLower()))
+		if (playerInput.ToLower().EqualTo(specialInputs[i].ToLower()))
 		{
 			break;
 		}
 	}
+	UE_LOG(LogTemp, Warning, TEXT("No input match!"));
+	alienOutput = alienOutput.FromString("Huh?");
 	return false;
 }
 

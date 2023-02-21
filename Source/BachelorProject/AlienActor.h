@@ -34,8 +34,9 @@ public:
 	int numberOfSpecialInputs;
 
 	FText outPut;
+	FText testCorrect = testCorrect.FromString("yopopo");
 	
-	bool CheckPlayerTextInput(FText input);
+	bool CheckPlayerTextInput(FText playerInput, FText &alienOutput);
 
 	int phaseCount;
 };
