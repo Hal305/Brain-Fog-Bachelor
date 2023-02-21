@@ -32,8 +32,10 @@ void AAlienManager::testFunction()
 	
 }
 
-void AAlienManager::ManageAlien()
+FText AAlienManager::ManageAlien(FText Response)
 {
 	mySpecialInput = mySpecialOutput.FromString("blah");
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *mySpecialInput.ToString());
+	return mySpecialInput;
 }
 

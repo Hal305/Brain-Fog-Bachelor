@@ -29,7 +29,7 @@ public:
 		FText mySpecialOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-		void ManageAlien();
+		FText ManageAlien(FText Response);
 
 	void testFunction();
 };
