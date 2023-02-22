@@ -22,8 +22,7 @@ void AAlienManager::BeginPlay()
 
 	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
 	currentAlien = Cast<AAlienActor>(alienClone);
-	
-	alienTextOutput = currentAlien->phaseStartOutput;
+
 }
 
 // Called every frame
@@ -40,10 +39,5 @@ FText AAlienManager::ManageAlien(FText playerTextInput)
 	phaseChange = currentAlien->CheckPlayerTextInput(playerTextInput, alienTextOutput);
 	UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
 	return alienTextOutput;
-}
-
-FText AAlienManager::GetAlienPhaseStartOutput()
-{
-	return currentAlien->phaseStartOutput;
 }
 

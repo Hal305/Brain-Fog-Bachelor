@@ -36,9 +36,6 @@ public:
 		class AAlienActor* currentAlien;
 	AActor* alienClone;
 
-	UFUNCTION(BlueprintCallable)
-		FText GetAlienPhaseStartOutput();
-
 	UPROPERTY(BlueprintReadWrite)
 	bool phaseChange = false;
 	

@@ -49,10 +49,9 @@ bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 	return false;
 }
 
-void AAlienActor::UpdateGameplayText(FText newPhaseStartOutput, TArray<FText> newCorrectInputs, FText newCorrectOutput,
+void AAlienActor::UpdateGameplayText(TArray<FText> newCorrectInputs, FText newCorrectOutput,
 	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput)
 {
-	phaseStartOutput = newPhaseStartOutput;
 	correctInputs = newCorrectInputs;
 	correctOutput = newCorrectOutput;
 	specialInputs = newSpecialInputs;

@@ -24,9 +24,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText phaseStartOutput;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FText> correctInputs;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	FText correctOutput;
@@ -48,6 +45,6 @@ public:
 
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void UpdateGameplayText(FText newPhaseStartOutput, TArray<FText> newCorrectInputs, FText newCorrectOutput,
+	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newCorrectOutput,
 		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput);
 };
