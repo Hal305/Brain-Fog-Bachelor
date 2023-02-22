@@ -15,9 +15,7 @@ AAlienActor::AAlienActor()
 void AAlienActor::BeginPlay()
 {
 	Super::BeginPlay();
-
-	phaseCount = 0;
-	numberOfCorrectInputs, numberOfSpecialInputs = 0;
+	
 }
 
 // Called every frame
@@ -30,26 +28,35 @@ void AAlienActor::Tick(float DeltaTime)
 bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 {
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput.ToString());
-	for (int i = 0; i < numberOfCorrectInputs; i++)
+	for (int i = 0; i < correctInputs.Num(); i++)
 	{
-		if (playerInput.ToLower().EqualTo(testCorrect.ToLower()))
+		if (playerInput.ToLower().EqualTo(correctInputs[i].ToLower()))
 		{
+			alienOutput = correctOutput;
 			phaseCount++;
-			//CorrectInputs.Empty(); //Might be done elsewhere
-			alienOutput = alienOutput.FromString("Yes!");
-			UE_LOG(LogTemp, Warning, TEXT("Input match!"));
 			return true;
 		}
 	}
-	for (int i = 0; i < numberOfSpecialInputs; i++)
+	for (int i = 0; i < specialInputs.Num(); i++)
 	{
 		if (playerInput.ToLower().EqualTo(specialInputs[i].ToLower()))
 		{
-			break;
+			alienOutput = specialOutputs[i];
+			return false;
 		}
 	}
-	UE_LOG(LogTemp, Warning, TEXT("No input match!"));
-	alienOutput = alienOutput.FromString("Huh?");
+	alienOutput = defaultWrongOutput;
 	return false;
+}
+
+void AAlienActor::UpdateGameplayText(FText newPhaseStartOutput, TArray<FText> newCorrectInputs, FText newCorrectOutput,
+	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput)
+{
+	phaseStartOutput = newPhaseStartOutput;
+	correctInputs = newCorrectInputs;
+	correctOutput = newCorrectOutput;
+	specialInputs = newSpecialInputs;
+	specialOutputs = newSpecialOutputs;
+	defaultWrongOutput = newDefaultWrongOutput; 
 }
 

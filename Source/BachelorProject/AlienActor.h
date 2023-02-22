@@ -23,20 +23,31 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Text")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText phaseStartOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FText> correctInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Text")
-	int numberOfCorrectInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText correctOutput;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Text")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FText> specialInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Text")
-	int numberOfSpecialInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> specialOutputs;
 
-	FText outPut;
-	FText testCorrect = testCorrect.FromString("yopopo");
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText defaultWrongOutput;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	int maxPhases;
+	UPROPERTY(BlueprintReadOnly)
+	int phaseCount = 1;
 	
 	bool CheckPlayerTextInput(FText playerInput, FText &alienOutput);
 
-	int phaseCount;
+	
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	void UpdateGameplayText(FText newPhaseStartOutput, TArray<FText> newCorrectInputs, FText newCorrectOutput,
+		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput);
 };
