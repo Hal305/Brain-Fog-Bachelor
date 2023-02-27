@@ -27,6 +27,8 @@ void AAlienActor::Tick(float DeltaTime)
 
 bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 {
+	playerInput = FText::TrimPreceding(playerInput);
+	playerInput = FText::TrimTrailing(playerInput);
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput.ToString());
 	for (int i = 0; i < correctInputs.Num(); i++)
 	{
