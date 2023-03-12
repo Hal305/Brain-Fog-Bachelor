@@ -23,8 +23,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	class USkeletalMesh MyBones;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FText> correctInputs;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
