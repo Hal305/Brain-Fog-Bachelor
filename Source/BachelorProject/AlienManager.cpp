@@ -2,6 +2,10 @@
 
 
 #include "AlienManager.h"
+#include "AlienActor.h"
+#include "Blueprint/UserWidget.h"
+#include "Blueprint/WidgetTree.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AAlienManager::AAlienManager()
@@ -15,7 +19,10 @@ AAlienManager::AAlienManager()
 void AAlienManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
+	currentAlien = Cast<AAlienActor>(alienClone);
+
 }
 
 // Called every frame
@@ -23,5 +30,14 @@ void AAlienManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+FText AAlienManager::ManageAlien(FText playerTextInput)
+{
+	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("Running ManageAlien before input check"));
+	phaseChange = currentAlien->CheckPlayerTextInput(playerTextInput, alienTextOutput);
+	UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
+	return alienTextOutput;
 }
 

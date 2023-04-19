@@ -23,4 +23,20 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// UPROPERTY(EditAnywhere, BluePrintReadWrite)
+	// 	FText playerTextInput;
+	UPROPERTY(BluePrintReadWrite)
+		FText alienTextOutput;
+
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+		FText ManageAlien(FText playerInput);
+
+	//Consider BlueprintImplementableEvent?
+	UPROPERTY(EditAnywhere, BluePrintReadWrite)
+		class AAlienActor* currentAlien;
+	AActor* alienClone;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool phaseChange = false;
+	
 };
