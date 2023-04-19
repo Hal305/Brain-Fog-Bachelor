@@ -3,8 +3,34 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "GameFramework/Actor.h"
 #include "AlienActor.generated.h"
+
+USTRUCT(BlueprintType)
+struct FAlienData : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText alienID;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	int maxPhases;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> correctInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText correctOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> specialInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> specialOutputs;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText defaultWrongOutput;
+};
 
 UCLASS()
 class BACHELORPROJECT_API AAlienActor : public AActor
@@ -23,22 +49,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> correctInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText correctOutput;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> specialInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> specialOutputs;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText defaultWrongOutput;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	int maxPhases;
-	UPROPERTY(BlueprintReadOnly)
+	FAlienData gameData;
 	int phaseCount = 1;
 	
 	bool CheckPlayerTextInput(FText playerInput, FText &alienOutput);
