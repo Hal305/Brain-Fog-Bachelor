@@ -11,9 +11,14 @@ USTRUCT(BlueprintType)
 struct FAlienData : public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
+
+public:
+	FAlienData() : alienID(0),
+	maxPhases(0)
+	{}
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText alienID;
+	int alienID;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int maxPhases;
@@ -21,7 +26,7 @@ struct FAlienData : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FText> correctInputs;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText correctOutput;
+	FText phaseStartOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FText> specialInputs;
@@ -49,13 +54,19 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	FAlienData gameData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int phaseCount = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	int maxPhases;
 	
 	bool CheckPlayerTextInput(FText playerInput, FText &alienOutput);
 
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newCorrectOutput,
+	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
 		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput);
 };

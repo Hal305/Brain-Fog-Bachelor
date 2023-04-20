@@ -36,7 +36,7 @@ bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 	{
 		if (playerInput.ToLower().EqualTo(gameData.correctInputs[i].ToLower()))
 		{
-			alienOutput = gameData.correctOutput;
+			alienOutput = gameData.phaseStartOutput;
 			phaseCount++;
 			return true;
 		}
@@ -53,11 +53,11 @@ bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 	return false;
 }
 
-void AAlienActor::UpdateGameplayText(TArray<FText> newCorrectInputs, FText newCorrectOutput,
+void AAlienActor::UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
 	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput)
 {
 	gameData.correctInputs = newCorrectInputs;
-	gameData.correctOutput = newCorrectOutput;
+	gameData.phaseStartOutput = newPhaseStartOutput;
 	gameData.specialInputs = newSpecialInputs;
 	gameData.specialOutputs = newSpecialOutputs;
 	gameData.defaultWrongOutput = newDefaultWrongOutput; 
