@@ -13,7 +13,7 @@ struct FAlienData : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 
 public:
-	FAlienData() : maxPhases(correctInputs.Num())
+	FAlienData() : maxPhases(0)
 	{}
 	
 	// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")

@@ -75,3 +75,6 @@ DerivedDataCache/*
 
 # Rider generated files
 .idea/
+
+# csv files
+*.csv
