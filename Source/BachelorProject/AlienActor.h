@@ -13,14 +13,12 @@ struct FAlienData : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 
 public:
-	FAlienData() : alienID(0),
-	maxPhases(0)
+	FAlienData() : maxPhases(correctInputs.Num())
 	{}
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	int alienID;
+	// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	// int alienID;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int maxPhases;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
@@ -35,6 +33,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	FText defaultWrongOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText lastOutput;
 };
 
 UCLASS()
@@ -55,7 +56,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FAlienData gameData;
+	FAlienData gameplayData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int phaseCount = 1;
