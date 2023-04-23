@@ -3,8 +3,40 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "GameFramework/Actor.h"
 #include "AlienActor.generated.h"
+
+USTRUCT(BlueprintType)
+struct FAlienData : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+public:
+	FAlienData() : maxPhases(0)
+	{}
+	
+	// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	// int alienID;
+	
+	int maxPhases;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> correctInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText phaseStartOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> specialInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FText> specialOutputs;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText defaultWrongOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FText lastOutput;
+};
 
 UCLASS()
 class BACHELORPROJECT_API AAlienActor : public AActor
@@ -24,27 +56,18 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> correctInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText correctOutput;
+	FAlienData gameplayData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> specialInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> specialOutputs;
+	int phaseCount = 1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText defaultWrongOutput;
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int maxPhases;
-	UPROPERTY(BlueprintReadOnly)
-	int phaseCount = 1;
 	
 	bool CheckPlayerTextInput(FText playerInput, FText &alienOutput);
 
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newCorrectOutput,
+	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
 		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput);
 };

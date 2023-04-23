@@ -32,34 +32,34 @@ bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 	playerInput = FText::TrimPreceding(playerInput);
 	playerInput = FText::TrimTrailing(playerInput);
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput.ToString());
-	for (int i = 0; i < correctInputs.Num(); i++)
+	for (int i = 0; i < gameplayData.correctInputs.Num(); i++)
 	{
-		if (playerInput.ToLower().EqualTo(correctInputs[i].ToLower()))
+		if (playerInput.ToLower().EqualTo(gameplayData.correctInputs[i].ToLower()))
 		{
-			alienOutput = correctOutput;
+			alienOutput = gameplayData.phaseStartOutput;
 			phaseCount++;
 			return true;
 		}
 	}
-	for (int i = 0; i < specialInputs.Num(); i++)
+	for (int i = 0; i < gameplayData.specialInputs.Num(); i++)
 	{
-		if (playerInput.ToLower().EqualTo(specialInputs[i].ToLower()))
+		if (playerInput.ToLower().EqualTo(gameplayData.specialInputs[i].ToLower()))
 		{
-			alienOutput = specialOutputs[i];
+			alienOutput = gameplayData.specialOutputs[i];
 			return false;
 		}
 	}
-	alienOutput = defaultWrongOutput;
+	alienOutput = gameplayData.defaultWrongOutput;
 	return false;
 }
 
-void AAlienActor::UpdateGameplayText(TArray<FText> newCorrectInputs, FText newCorrectOutput,
+void AAlienActor::UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
 	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput)
 {
-	correctInputs = newCorrectInputs;
-	correctOutput = newCorrectOutput;
-	specialInputs = newSpecialInputs;
-	specialOutputs = newSpecialOutputs;
-	defaultWrongOutput = newDefaultWrongOutput; 
+	gameplayData.correctInputs = newCorrectInputs;
+	gameplayData.phaseStartOutput = newPhaseStartOutput;
+	gameplayData.specialInputs = newSpecialInputs;
+	gameplayData.specialOutputs = newSpecialOutputs;
+	gameplayData.defaultWrongOutput = newDefaultWrongOutput; 
 }
 
