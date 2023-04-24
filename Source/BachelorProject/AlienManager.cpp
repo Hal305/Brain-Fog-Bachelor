@@ -37,7 +37,17 @@ FText AAlienManager::ManageAlien(FText playerTextInput)
 	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
 	//UE_LOG(LogTemp, Warning, TEXT("Running ManageAlien before input check"));
 	phaseChange = currentAlien->CheckPlayerTextInput(playerTextInput, alienTextOutput);
-	UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
+	if(currentAlien->phaseCount >= currentAlien->maxPhases)
+		levelDone = true;
 	return alienTextOutput;
+}
+
+void AAlienManager::SetupLevelPhase(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
+	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput)
+{
+	currentAlien->UpdateGameplayText(newCorrectInputs, newPhaseStartOutput,
+	newSpecialInputs, newSpecialOutputs, newDefaultWrongOutput, lastOutput);
+	phaseChange = false;
 }
 

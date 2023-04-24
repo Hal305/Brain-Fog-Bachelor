@@ -54,12 +54,13 @@ bool AAlienActor::CheckPlayerTextInput(FText playerInput, FText &alienOutput)
 }
 
 void AAlienActor::UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
-	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput)
+	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput)
 {
 	gameplayData.correctInputs = newCorrectInputs;
 	gameplayData.phaseStartOutput = newPhaseStartOutput;
 	gameplayData.specialInputs = newSpecialInputs;
 	gameplayData.specialOutputs = newSpecialOutputs;
-	gameplayData.defaultWrongOutput = newDefaultWrongOutput; 
+	gameplayData.defaultWrongOutput = newDefaultWrongOutput;
+	gameplayData.lastOutput = lastOutput;
 }
 

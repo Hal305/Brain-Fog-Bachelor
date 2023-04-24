@@ -30,8 +30,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 		FText ManageAlien(FText playerInput);
-
-	//Consider BlueprintImplementableEvent?
+	
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	void SetupLevelPhase(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
+	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput);
+	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
 		class AAlienActor* currentAlien;
 	AActor* alienClone;
@@ -39,4 +42,6 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool phaseChange = false;
 	
+	UPROPERTY(BlueprintReadWrite)
+	bool levelDone = false;
 };

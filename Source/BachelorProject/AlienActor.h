@@ -69,5 +69,5 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
-		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput);
+		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput);
 };
