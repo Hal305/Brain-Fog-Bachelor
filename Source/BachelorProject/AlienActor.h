@@ -22,20 +22,20 @@ public:
 	int maxPhases;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> correctInputs;
+	TArray<FString> correctInputs;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText phaseStartOutput;
+	FString phaseStartOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> specialInputs;
+	TArray<FString> specialInputs;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FText> specialOutputs;
+	TArray<FString> specialOutputs;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText defaultWrongOutput;
+	FString defaultWrongOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FText lastOutput;
+	FString lastOutput;
 };
 
 UCLASS()
@@ -64,10 +64,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int maxPhases;
 	
-	bool CheckPlayerTextInput(FText playerInput, FText &alienOutput);
+	bool CheckPlayerTextInput(FString playerInput, FString &alienOutput);
 
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void UpdateGameplayText(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
-		TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput);
+	void UpdateGameplayText(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
+		TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput);
 };

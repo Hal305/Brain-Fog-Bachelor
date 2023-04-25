@@ -26,14 +26,14 @@ public:
 	// UPROPERTY(EditAnywhere, BluePrintReadWrite)
 	// 	FText playerTextInput;
 	UPROPERTY(BluePrintReadWrite)
-		FText alienTextOutput;
+		FString alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-		FText ManageAlien(FText playerInput);
+		FString ManageAlien(FString playerInput);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetupLevelPhase(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
-	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput);
+	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
+	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput);
 	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
 		class AAlienActor* currentAlien;

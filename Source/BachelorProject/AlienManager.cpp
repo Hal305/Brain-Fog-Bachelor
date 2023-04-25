@@ -32,7 +32,7 @@ void AAlienManager::Tick(float DeltaTime)
 
 }
 
-FText AAlienManager::ManageAlien(FText playerTextInput)
+FString AAlienManager::ManageAlien(FString playerTextInput)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
 	//UE_LOG(LogTemp, Warning, TEXT("Running ManageAlien before input check"));
@@ -43,8 +43,8 @@ FText AAlienManager::ManageAlien(FText playerTextInput)
 	return alienTextOutput;
 }
 
-void AAlienManager::SetupLevelPhase(TArray<FText> newCorrectInputs, FText newPhaseStartOutput,
-	TArray<FText> newSpecialInputs, TArray<FText> newSpecialOutputs, FText newDefaultWrongOutput, FText lastOutput)
+void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
+	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput)
 {
 	currentAlien->UpdateGameplayText(newCorrectInputs, newPhaseStartOutput,
 	newSpecialInputs, newSpecialOutputs, newDefaultWrongOutput, lastOutput);
