@@ -39,6 +39,9 @@ public:
 		class AAlienActor* currentAlien;
 	AActor* alienClone;
 
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	void SetAlien();
+
 	UPROPERTY(BlueprintReadWrite)
 	bool phaseChange = false;
 	

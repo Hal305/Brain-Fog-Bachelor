@@ -20,9 +20,7 @@ void AAlienManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
-	currentAlien = Cast<AAlienActor>(alienClone);
-
+	
 }
 
 // Called every frame
@@ -49,5 +47,11 @@ void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString ne
 	currentAlien->UpdateGameplayText(newCorrectInputs, newPhaseStartOutput,
 	newSpecialInputs, newSpecialOutputs, newDefaultWrongOutput, lastOutput);
 	phaseChange = false;
+}
+
+void AAlienManager::SetAlien()
+{
+	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
+	currentAlien = Cast<AAlienActor>(alienClone);
 }
 
