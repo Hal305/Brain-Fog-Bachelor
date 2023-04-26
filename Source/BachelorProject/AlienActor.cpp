@@ -36,7 +36,7 @@ bool AAlienActor::CheckPlayerTextInput(FString playerInput, FString &alienOutput
 	{
 		if (playerInput.ToLower().Equals(gameplayData.correctInputs[i].ToLower()))
 		{
-			alienOutput = gameplayData.phaseStartOutput;
+			alienOutput = gameplayData.correctOutput;
 			phaseCount++;
 			return true;
 		}

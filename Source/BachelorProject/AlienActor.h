@@ -18,7 +18,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FString> correctInputs;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FString phaseStartOutput;
+	FString correctOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FString> specialInputs;
@@ -29,7 +29,7 @@ public:
 	FString defaultWrongOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FString lastOutput;
+	FString startingOutput;
 };
 
 UCLASS()

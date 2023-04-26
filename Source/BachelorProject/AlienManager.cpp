@@ -28,6 +28,7 @@ void AAlienManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	
 }
 
 void AAlienManager::SetAlien()
@@ -43,19 +44,23 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 	phaseChange = currentAlien->CheckPlayerTextInput(playerTextInput, alienTextOutput);
 	//UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
 	if(currentAlien->phaseCount > currentAlien->maxPhases)
+	{
 		levelDone = true;
+		phaseChange = false;
+	}
 	return alienTextOutput;
 }
 
-void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput)
+void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
+                                    TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
+                                    FString newDefaultWrongOutput, FString startingOutput)
 {
 	currentAlien->gameplayData.correctInputs = newCorrectInputs;
-	currentAlien->gameplayData.phaseStartOutput = newPhaseStartOutput;
+	currentAlien->gameplayData.correctOutput = newCorrectOutput;
 	currentAlien->gameplayData.specialInputs = newSpecialInputs;
 	currentAlien->gameplayData.specialOutputs = newSpecialOutputs;
 	currentAlien->gameplayData.defaultWrongOutput = newDefaultWrongOutput;
-	currentAlien->gameplayData.lastOutput = lastOutput;
+	currentAlien->gameplayData.startingOutput = startingOutput;
 	
 	phaseChange = false;
 }

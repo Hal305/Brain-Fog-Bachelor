@@ -27,8 +27,8 @@ public:
 	void SetAlien();
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput);
+	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
+	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString startingOutput);
 	
 	UPROPERTY(BluePrintReadWrite)
 		FString alienTextOutput;
