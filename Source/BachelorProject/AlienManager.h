@@ -23,24 +23,22 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// UPROPERTY(EditAnywhere, BluePrintReadWrite)
-	// 	FText playerTextInput;
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	void SetAlien();
+
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
+	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput);
+	
 	UPROPERTY(BluePrintReadWrite)
 		FString alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 		FString ManageAlien(FString playerInput);
 	
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput);
-	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
 		class AAlienActor* currentAlien;
 	AActor* alienClone;
-
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetAlien();
 
 	UPROPERTY(BlueprintReadWrite)
 	bool phaseChange = false;

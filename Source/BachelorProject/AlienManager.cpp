@@ -30,6 +30,12 @@ void AAlienManager::Tick(float DeltaTime)
 
 }
 
+void AAlienManager::SetAlien()
+{
+	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
+	currentAlien = Cast<AAlienActor>(alienClone);
+}
+
 FString AAlienManager::ManageAlien(FString playerTextInput)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
@@ -44,14 +50,15 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
 	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput)
 {
-	currentAlien->UpdateGameplayText(newCorrectInputs, newPhaseStartOutput,
-	newSpecialInputs, newSpecialOutputs, newDefaultWrongOutput, lastOutput);
+	currentAlien->gameplayData.correctInputs = newCorrectInputs;
+	currentAlien->gameplayData.phaseStartOutput = newPhaseStartOutput;
+	currentAlien->gameplayData.specialInputs = newSpecialInputs;
+	currentAlien->gameplayData.specialOutputs = newSpecialOutputs;
+	currentAlien->gameplayData.defaultWrongOutput = newDefaultWrongOutput;
+	currentAlien->gameplayData.lastOutput = lastOutput;
+	
 	phaseChange = false;
 }
 
-void AAlienManager::SetAlien()
-{
-	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
-	currentAlien = Cast<AAlienActor>(alienClone);
-}
+
 

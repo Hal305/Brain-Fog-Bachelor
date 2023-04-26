@@ -13,13 +13,7 @@ struct FAlienData : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 
 public:
-	FAlienData() : maxPhases(0)
-	{}
-	
-	// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	// int alienID;
-	
-	int maxPhases;
+	FAlienData() {}
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	TArray<FString> correctInputs;
@@ -65,9 +59,5 @@ public:
 	int maxPhases;
 	
 	bool CheckPlayerTextInput(FString playerInput, FString &alienOutput);
-
 	
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void UpdateGameplayText(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
-		TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput);
 };

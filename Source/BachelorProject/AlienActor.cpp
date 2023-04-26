@@ -53,14 +53,3 @@ bool AAlienActor::CheckPlayerTextInput(FString playerInput, FString &alienOutput
 	return false;
 }
 
-void AAlienActor::UpdateGameplayText(TArray<FString> newCorrectInputs, FString newPhaseStartOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString lastOutput)
-{
-	gameplayData.correctInputs = newCorrectInputs;
-	gameplayData.phaseStartOutput = newPhaseStartOutput;
-	gameplayData.specialInputs = newSpecialInputs;
-	gameplayData.specialOutputs = newSpecialOutputs;
-	gameplayData.defaultWrongOutput = newDefaultWrongOutput;
-	gameplayData.lastOutput = lastOutput;
-}
-
