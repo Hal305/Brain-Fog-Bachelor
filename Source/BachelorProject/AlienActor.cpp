@@ -32,24 +32,24 @@ bool AAlienActor::CheckPlayerTextInput(FString playerInput, FString &alienOutput
 	playerInput = playerInput.TrimStart();
 	playerInput =  playerInput.TrimEnd();
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput);
-	for (int i = 0; i < gameplayData.correctInputs.Num(); i++)
+	for (int i = 0; i < alienData.correctInputs.Num(); i++)
 	{
-		if (playerInput.ToLower().Equals(gameplayData.correctInputs[i].ToLower()))
+		if (playerInput.ToLower().Equals(alienData.correctInputs[i].ToLower()))
 		{
-			alienOutput = gameplayData.correctOutput;
+			alienOutput = alienData.correctOutput;
 			phaseCount++;
 			return true;
 		}
 	}
-	for (int i = 0; i < gameplayData.specialInputs.Num(); i++)
+	for (int i = 0; i < alienData.specialInputs.Num(); i++)
 	{
-		if (playerInput.ToLower().Equals(gameplayData.specialInputs[i].ToLower()))
+		if (playerInput.ToLower().Equals(alienData.specialInputs[i].ToLower()))
 		{
-			alienOutput = gameplayData.specialOutputs[i];
+			alienOutput = alienData.specialOutputs[i];
 			return false;
 		}
 	}
-	alienOutput = gameplayData.defaultWrongOutput;
+	alienOutput = alienData.defaultWrongOutput;
 	return false;
 }
 

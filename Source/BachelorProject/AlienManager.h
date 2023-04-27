@@ -3,9 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "GameFramework/Actor.h"
 #include "AlienManager.generated.h"
 
+
+USTRUCT(BlueprintType)
+struct FAlienList : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+public:
+	FAlienList() {}
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
+	TSoftObjectPtr<USkeletalMesh> alienMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
+	TSoftObjectPtr<UDataTable> alienData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
+	FString startingOutput;
+	
+};
+	
 UCLASS()
 class BACHELORPROJECT_API AAlienManager : public AActor
 {
@@ -23,12 +44,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(BluePrintReadWrite)
+	FAlienList aliens;
+	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetAlien();
+	void SetAlien(FAlienList aliensIn);
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput, FString startingOutput);
+	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput);
 	
 	UPROPERTY(BluePrintReadWrite)
 		FString alienTextOutput;

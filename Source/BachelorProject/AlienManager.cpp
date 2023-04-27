@@ -31,8 +31,12 @@ void AAlienManager::Tick(float DeltaTime)
 	
 }
 
-void AAlienManager::SetAlien()
+void AAlienManager::SetAlien(FAlienList aliensIn)
 {
+	aliens = aliensIn;
+
+	aliens.alienData = aliensIn.alienData;
+	
 	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
 	currentAlien = Cast<AAlienActor>(alienClone);
 }
@@ -53,14 +57,13 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 
 void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
                                     TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
-                                    FString newDefaultWrongOutput, FString startingOutput)
+                                    FString newDefaultWrongOutput)
 {
-	currentAlien->gameplayData.correctInputs = newCorrectInputs;
-	currentAlien->gameplayData.correctOutput = newCorrectOutput;
-	currentAlien->gameplayData.specialInputs = newSpecialInputs;
-	currentAlien->gameplayData.specialOutputs = newSpecialOutputs;
-	currentAlien->gameplayData.defaultWrongOutput = newDefaultWrongOutput;
-	currentAlien->gameplayData.startingOutput = startingOutput;
+	currentAlien->alienData.correctInputs = newCorrectInputs;
+	currentAlien->alienData.correctOutput = newCorrectOutput;
+	currentAlien->alienData.specialInputs = newSpecialInputs;
+	currentAlien->alienData.specialOutputs = newSpecialOutputs;
+	currentAlien->alienData.defaultWrongOutput = newDefaultWrongOutput;
 	
 	phaseChange = false;
 }
