@@ -47,11 +47,11 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 	//UE_LOG(LogTemp, Warning, TEXT("Running ManageAlien before input check"));
 	phaseChange = currentAlien->CheckPlayerTextInput(playerTextInput, alienTextOutput);
 	//UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
-	if(currentAlien->phaseCount > currentAlien->maxPhases)
-	{
-		levelDone = true;
-		phaseChange = false;
-	}
+	//if(currentAlien->phaseCount > currentAlien->maxPhases)
+	//{
+	//	levelDone = true;
+	//	phaseChange = false;
+	//}
 	return alienTextOutput;
 }
 
