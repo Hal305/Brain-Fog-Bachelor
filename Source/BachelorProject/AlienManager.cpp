@@ -29,6 +29,15 @@ void AAlienManager::Tick(float DeltaTime)
 	
 }
 
+void AAlienManager::SetAlien(FAlienList aliensIn)
+{
+	aliens = aliensIn;
+	//aliens.alienData = aliensIn.alienData;
+	
+	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
+	currentAlien = Cast<AAlienActor>(alienClone);
+}
+
 bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutput)
 {
 	playerInput = playerInput.TrimStart();
@@ -55,17 +64,6 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 	return false;
 }
 
-
-
-void AAlienManager::SetAlien(FAlienList aliensIn)
-{
-	aliens = aliensIn;
-	//aliens.alienData = aliensIn.alienData;
-	
-	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
-	currentAlien = Cast<AAlienActor>(alienClone);
-}
-
 FString AAlienManager::ManageAlien(FString playerTextInput)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
@@ -73,22 +71,22 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 	return alienTextOutput;
 }
 
-void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
-                                    TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
-                                    FString newDefaultWrongOutput,int newCorrectAnim,
-                                    TArray<int> newSpecialAnim, int newWrongAnim)
-									//FAlienData alienDataIn)
+void AAlienManager::SetupLevelPhase(//TArray<FString> newCorrectInputs, FString newCorrectOutput,
+                                    //TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
+                                    //FString newDefaultWrongOutput,int newCorrectAnim,
+                                    //TArray<int> newSpecialAnim, int newWrongAnim)
+									FAlienData alienDataIn)
 {
-	alienData.correctInputs = newCorrectInputs;
-	alienData.correctOutput = newCorrectOutput;
-	alienData.specialInputs = newSpecialInputs;
-	alienData.specialOutputs = newSpecialOutputs;
-	alienData.defaultWrongOutput = newDefaultWrongOutput;
-	alienData.correctAnim = newCorrectAnim;
-	alienData.specialAnim = newSpecialAnim;
-	alienData.wrongAnim = newWrongAnim;
+	//alienData.correctInputs = newCorrectInputs;
+	//alienData.correctOutput = newCorrectOutput;
+	//alienData.specialInputs = newSpecialInputs;
+	//alienData.specialOutputs = newSpecialOutputs;
+	//alienData.defaultWrongOutput = newDefaultWrongOutput;
+	//alienData.correctAnim = newCorrectAnim;
+	//alienData.specialAnim = newSpecialAnim;
+	//alienData.wrongAnim = newWrongAnim;
 
-	//alienData = alienDataIn;
+	alienData = alienDataIn;
 	
 	phaseChange = false;
 }
