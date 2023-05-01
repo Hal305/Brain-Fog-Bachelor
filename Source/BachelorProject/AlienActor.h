@@ -27,7 +27,15 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	FString defaultWrongOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
+	int correctAnim;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
+	TArray<int> specialAnim;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
+	int wrongAnim;
 };
 
 UCLASS()

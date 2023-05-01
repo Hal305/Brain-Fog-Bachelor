@@ -35,7 +35,7 @@ void AAlienManager::SetAlien(FAlienList aliensIn)
 {
 	aliens = aliensIn;
 
-	aliens.alienData = aliensIn.alienData;
+	//aliens.alienData = aliensIn.alienData;
 	
 	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
 	currentAlien = Cast<AAlienActor>(alienClone);
@@ -57,13 +57,17 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 
 void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
                                     TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
-                                    FString newDefaultWrongOutput)
+                                    FString newDefaultWrongOutput,int newCorrectAnim,
+                                    TArray<int> newSpecialAnim, int newWrongAnim)
 {
 	currentAlien->alienData.correctInputs = newCorrectInputs;
 	currentAlien->alienData.correctOutput = newCorrectOutput;
 	currentAlien->alienData.specialInputs = newSpecialInputs;
 	currentAlien->alienData.specialOutputs = newSpecialOutputs;
 	currentAlien->alienData.defaultWrongOutput = newDefaultWrongOutput;
+	currentAlien->alienData.correctAnim = newCorrectAnim;
+	currentAlien->alienData.specialAnim = newSpecialAnim;
+	currentAlien->alienData.wrongAnim = newWrongAnim;
 	
 	phaseChange = false;
 }

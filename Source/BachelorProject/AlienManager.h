@@ -55,7 +55,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput);
+	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput,
+	int newCorrectAnim, TArray<int> newSpecialAnim, int newWrongAnim);
 	
 	UPROPERTY(BluePrintReadWrite)
 		FString alienTextOutput;

@@ -1,14 +1,14 @@
-﻿Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput
+﻿Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
 1,"The Yoppoppo points at the warp gate that it is about to head through.
 ""Wadda Shwoom?""
-Looks like it wants to know what something is?","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.
+Looks like it wants to know what something is?","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.,0,0,0
 2,"The Yoppoppo points worriedly at the warp gate that it is about to head through.
 ""Shwoom Yipyipyip Blooba?""
 You look at the warp gate, and it looks normal and functional.","(""Shwoom Yipyipyip"",""Yipyipyip"")",,,"The Yoppoppo looks confused. 
 ""Wadda?"" 
 The alien points at the warp gate again.
 ""Wadda Shwoom?""
-Maybe this Shwoom thing has a name?"
+Maybe this Shwoom thing has a name?",0,0,0
 3,"The Yoppoppo smiles with relief.
 ""Prako!""
 It flies away through the warp gate. Seems you alleviated its worries!","(""Weh"",""Weh Blooba"",""Weh Shwoom Blooba"",""Weh Blooba Shwoom"")","(""Yeh"",""Yeh Blooba"",""Yeh Shwoom Blooba"",""Yeh Blooba Shwoom"")","(""The Yoppoppo looks shocked.\n\""Shwoom Blooba?! Wadda?!\""\nThat doesn't seem to be the right response... Give it another go!"",
@@ -17,4 +17,4 @@ It flies away through the warp gate. Seems you alleviated its worries!","(""Weh"
 ""The Yoppoppo looks shocked.\n\""Shwoom Blooba?! Wadda?!\""\nThat doesn't seem to be the right response... Give it another go!"")","The Yoppoppo looks confused. 
 ""Wadda?"" 
 The alien points at the warp gate again.
-""Shwoom Blooba?"""
+""Shwoom Blooba?""",0,0,0
