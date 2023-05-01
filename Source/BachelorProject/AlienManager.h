@@ -29,6 +29,37 @@ public:
 	FString startingOutput;
 	
 };
+
+USTRUCT(BlueprintType)
+struct FAlienData : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+public:
+	FAlienData() {}
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FString> correctInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FString correctOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FString> specialInputs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	TArray<FString> specialOutputs;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FString defaultWrongOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
+	int correctAnim;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
+	TArray<int> specialAnim;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
+	int wrongAnim;
+};
 	
 UCLASS()
 class BACHELORPROJECT_API AAlienManager : public AActor
@@ -49,23 +80,38 @@ public:
 
 	UPROPERTY(BluePrintReadWrite)
 	FAlienList aliens;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FAlienData alienData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	int phaseCount = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	int maxPhases;
+	
+	bool CheckPlayerTextInput(FString playerInput, FString &alienOutput);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	void SetAlien(FAlienList aliensIn);
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetupLevelPhase(TArray<FString> newCorrectInputs, FString newCorrectOutput,
-	TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs, FString newDefaultWrongOutput,
-	int newCorrectAnim, TArray<int> newSpecialAnim, int newWrongAnim);
+	void SetupLevelPhase(
+		TArray<FString> newCorrectInputs, FString newCorrectOutput,
+		TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
+		FString newDefaultWrongOutput,int newCorrectAnim,
+		TArray<int> newSpecialAnim, int newWrongAnim
+		//FAlienData alienDataIn
+		);
 	
 	UPROPERTY(BluePrintReadWrite)
-		FString alienTextOutput;
+	FString alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-		FString ManageAlien(FString playerInput);
+	FString ManageAlien(FString playerInput);
 	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
-		class AAlienActor* currentAlien;
+	class AAlienActor* currentAlien;
 	AActor* alienClone;
 
 	UPROPERTY(BlueprintReadWrite)

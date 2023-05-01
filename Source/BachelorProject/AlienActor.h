@@ -3,40 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/DataTable.h"
 #include "GameFramework/Actor.h"
 #include "AlienActor.generated.h"
-
-USTRUCT(BlueprintType)
-struct FAlienData : public FTableRowBase
-{
-	GENERATED_USTRUCT_BODY()
-
-public:
-	FAlienData() {}
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FString> correctInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FString correctOutput;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FString> specialInputs;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	TArray<FString> specialOutputs;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FString defaultWrongOutput;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
-	int correctAnim;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
-	TArray<int> specialAnim;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
-	int wrongAnim;
-};
 
 UCLASS()
 class BACHELORPROJECT_API AAlienActor : public AActor
@@ -54,16 +22,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	FAlienData alienData;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	int phaseCount = 1;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	int maxPhases;
-	
-	bool CheckPlayerTextInput(FString playerInput, FString &alienOutput);
 	
 };

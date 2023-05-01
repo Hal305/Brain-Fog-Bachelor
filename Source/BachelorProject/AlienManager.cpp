@@ -3,8 +3,6 @@
 
 #include "AlienManager.h"
 #include "AlienActor.h"
-#include "Blueprint/UserWidget.h"
-#include "Blueprint/WidgetTree.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -31,10 +29,37 @@ void AAlienManager::Tick(float DeltaTime)
 	
 }
 
+bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutput)
+{
+	playerInput = playerInput.TrimStart();
+	playerInput =  playerInput.TrimEnd();
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput);
+	for (int i = 0; i < alienData.correctInputs.Num(); i++)
+	{
+		if (playerInput.ToLower().Equals(alienData.correctInputs[i].ToLower()))
+		{
+			alienOutput = alienData.correctOutput;
+			phaseCount++;
+			return true;
+		}
+	}
+	for (int i = 0; i < alienData.specialInputs.Num(); i++)
+	{
+		if (playerInput.ToLower().Equals(alienData.specialInputs[i].ToLower()))
+		{
+			alienOutput = alienData.specialOutputs[i];
+			return false;
+		}
+	}
+	alienOutput = alienData.defaultWrongOutput;
+	return false;
+}
+
+
+
 void AAlienManager::SetAlien(FAlienList aliensIn)
 {
 	aliens = aliensIn;
-
 	//aliens.alienData = aliensIn.alienData;
 	
 	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
@@ -44,14 +69,7 @@ void AAlienManager::SetAlien(FAlienList aliensIn)
 FString AAlienManager::ManageAlien(FString playerTextInput)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
-	//UE_LOG(LogTemp, Warning, TEXT("Running ManageAlien before input check"));
-	phaseChange = currentAlien->CheckPlayerTextInput(playerTextInput, alienTextOutput);
-	//UE_LOG(LogTemp, Warning, TEXT("Alien text output: %s"), *alienTextOutput.ToString());
-	//if(currentAlien->phaseCount > currentAlien->maxPhases)
-	//{
-	//	levelDone = true;
-	//	phaseChange = false;
-	//}
+	phaseChange = CheckPlayerTextInput(playerTextInput, alienTextOutput);
 	return alienTextOutput;
 }
 
@@ -59,15 +77,18 @@ void AAlienManager::SetupLevelPhase(TArray<FString> newCorrectInputs, FString ne
                                     TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
                                     FString newDefaultWrongOutput,int newCorrectAnim,
                                     TArray<int> newSpecialAnim, int newWrongAnim)
+									//FAlienData alienDataIn)
 {
-	currentAlien->alienData.correctInputs = newCorrectInputs;
-	currentAlien->alienData.correctOutput = newCorrectOutput;
-	currentAlien->alienData.specialInputs = newSpecialInputs;
-	currentAlien->alienData.specialOutputs = newSpecialOutputs;
-	currentAlien->alienData.defaultWrongOutput = newDefaultWrongOutput;
-	currentAlien->alienData.correctAnim = newCorrectAnim;
-	currentAlien->alienData.specialAnim = newSpecialAnim;
-	currentAlien->alienData.wrongAnim = newWrongAnim;
+	alienData.correctInputs = newCorrectInputs;
+	alienData.correctOutput = newCorrectOutput;
+	alienData.specialInputs = newSpecialInputs;
+	alienData.specialOutputs = newSpecialOutputs;
+	alienData.defaultWrongOutput = newDefaultWrongOutput;
+	alienData.correctAnim = newCorrectAnim;
+	alienData.specialAnim = newSpecialAnim;
+	alienData.wrongAnim = newWrongAnim;
+
+	//alienData = alienDataIn;
 	
 	phaseChange = false;
 }
