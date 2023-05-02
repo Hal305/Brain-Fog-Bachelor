@@ -64,6 +64,14 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 	return false;
 }
 
+bool AAlienManager::FindQuote(FString text)
+{
+	for (int i = 0; i < text.Len(); i++)
+		if(text[i] == '\"')
+			return true;
+	return false;
+}
+
 FString AAlienManager::ExtractDialogue(FString text)
 {
 	//Based on this tutorial:
@@ -76,8 +84,6 @@ FString AAlienManager::ExtractDialogue(FString text)
 
 	FString colorText = text.Mid(startIndex, colorLength);
 	//UE_LOG(LogTemp, Warning, TEXT("Color: %s"), *colorText);
-	// for (int i = startIndex + 1; i < endIndex + 1; i++)
-	// 	;
 	return colorText;
 }
 
