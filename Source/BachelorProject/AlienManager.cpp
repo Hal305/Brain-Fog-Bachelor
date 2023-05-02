@@ -68,7 +68,6 @@ FString AAlienManager::ExtractDialogue(FString text)
 {
 	//Based on this tutorial:
 	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
-	
 	int32 startIndex = text.Find("\"", ESearchCase::IgnoreCase,
 	ESearchDir::Type::FromStart, 0);
 	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
@@ -89,21 +88,8 @@ FString AAlienManager::ManageAlien(FString playerTextInput)
 	return alienTextOutput;
 }
 
-void AAlienManager::SetupLevelPhase(//TArray<FString> newCorrectInputs, FString newCorrectOutput,
-                                    //TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
-                                    //FString newDefaultWrongOutput,int newCorrectAnim,
-                                    //TArray<int> newSpecialAnim, int newWrongAnim)
-									FAlienData alienDataIn)
+void AAlienManager::SetupLevelPhase(FAlienData alienDataIn)
 {
-	//alienData.correctInputs = newCorrectInputs;
-	//alienData.correctOutput = newCorrectOutput;
-	//alienData.specialInputs = newSpecialInputs;
-	//alienData.specialOutputs = newSpecialOutputs;
-	//alienData.defaultWrongOutput = newDefaultWrongOutput;
-	//alienData.correctAnim = newCorrectAnim;
-	//alienData.specialAnim = newSpecialAnim;
-	//alienData.wrongAnim = newWrongAnim;
-
 	alienData = alienDataIn;
 	phaseChange = false;
 }

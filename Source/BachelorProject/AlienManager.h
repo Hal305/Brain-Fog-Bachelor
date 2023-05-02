@@ -96,13 +96,7 @@ public:
 	void SetAlien(FAlienList aliensIn);
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetupLevelPhase(
-		//TArray<FString> newCorrectInputs, FString newCorrectOutput,
-		//TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
-		//FString newDefaultWrongOutput,int newCorrectAnim,
-		//TArray<int> newSpecialAnim, int newWrongAnim
-		FAlienData alienDataIn
-		);
+	void SetupLevelPhase(FAlienData alienDataIn);
 	
 	UPROPERTY(BluePrintReadWrite)
 	FString alienTextOutput;
