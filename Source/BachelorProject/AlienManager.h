@@ -108,6 +108,9 @@ public:
 	FString alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	FString ExtractDialogue(FString text);
+	
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	FString ManageAlien(FString playerInput);
 	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)

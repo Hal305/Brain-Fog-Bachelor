@@ -64,6 +64,24 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 	return false;
 }
 
+FString AAlienManager::ExtractDialogue(FString text)
+{
+	//Based on this tutorial:
+	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
+	
+	int32 startIndex = text.Find("\"", ESearchCase::IgnoreCase,
+	ESearchDir::Type::FromStart, 0);
+	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
+	ESearchDir::Type::FromStart, startIndex + 1);
+	int32 colorLength = endIndex - startIndex + 1;
+
+	FString colorText = text.Mid(startIndex, colorLength);
+	//UE_LOG(LogTemp, Warning, TEXT("Color: %s"), *colorText);
+	// for (int i = startIndex + 1; i < endIndex + 1; i++)
+	// 	;
+	return colorText;
+}
+
 FString AAlienManager::ManageAlien(FString playerTextInput)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Player text input: %s"), *playerTextInput.ToString());
@@ -87,7 +105,6 @@ void AAlienManager::SetupLevelPhase(//TArray<FString> newCorrectInputs, FString 
 	//alienData.wrongAnim = newWrongAnim;
 
 	alienData = alienDataIn;
-	
 	phaseChange = false;
 }
 
