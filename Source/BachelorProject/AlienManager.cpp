@@ -65,9 +65,10 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 
 bool AAlienManager::FindQuote(FString text, int index)
 {
-	for (int i = index; i < text.Len(); i++)
+	for (int i = index; i < text.Len() - 1; i++)
 	{
-		if(text[i] == '\n' && text[i+1] == '\"')
+		if(text[i] == '\n' && text[i+1] == '\"'
+			|| text[i] == '\"' && text[i+1] == '\n')
 			return true;
 	}
 	return false;
