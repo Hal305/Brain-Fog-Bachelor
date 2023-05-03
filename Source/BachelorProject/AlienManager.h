@@ -102,10 +102,12 @@ public:
 	FString alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	bool FindQuote(FString text);
+	bool FindQuote(FString text, int index);
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	FString ExtractDialogue(FString text);
+	TArray<FString> SplitOutput(FString text);
+	FString ExtractNarration(FString text, int32 &startIndex);
+	//FString ExtractDialogue(FString text, int32 &startIndex);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	FString ManageAlien(FString playerInput);

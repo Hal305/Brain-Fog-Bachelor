@@ -42,7 +42,6 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 {
 	playerInput = playerInput.TrimStart();
 	playerInput =  playerInput.TrimEnd();
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *playerInput);
 	for (int i = 0; i < alienData.correctInputs.Num(); i++)
 	{
 		if (playerInput.ToLower().Equals(alienData.correctInputs[i].ToLower()))
@@ -64,28 +63,78 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 	return false;
 }
 
-bool AAlienManager::FindQuote(FString text)
+bool AAlienManager::FindQuote(FString text, int index)
 {
-	for (int i = 0; i < text.Len(); i++)
+	for (int i = index; i < text.Len(); i++)
 		if(text[i] == '\"')
 			return true;
 	return false;
 }
 
-FString AAlienManager::ExtractDialogue(FString text)
+TArray<FString> AAlienManager::SplitOutput(FString text)
 {
 	//Based on this tutorial:
 	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
-	int32 startIndex = text.Find("\"", ESearchCase::IgnoreCase,
-	ESearchDir::Type::FromStart, 0);
-	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
-	ESearchDir::Type::FromStart, startIndex + 1);
-	int32 colorLength = endIndex - startIndex + 1;
+			
+	bool quote = false;
 
-	FString colorText = text.Mid(startIndex, colorLength);
-	//UE_LOG(LogTemp, Warning, TEXT("Color: %s"), *colorText);
-	return colorText;
+	TArray<FString> partitionedOutput;
+	if (!FindQuote(text, 0))
+	{
+		partitionedOutput.Add(text);
+		//UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *text);
+		return partitionedOutput;
+	}
+	
+	int32 startIndex = 0;
+	int32 endIndex = 0;
+
+	if (text[0] == '\"')
+		quote = true;
+	else
+	{
+		partitionedOutput.Add(ExtractNarration(text, startIndex));
+	}
+	
+	for (int i = startIndex; i < text.Len(); i = startIndex)
+	{
+		// if (quote)
+		// {
+		// 	ExtractNarration(text, startIndex);
+		// }
+		// else
+		// {
+		if (text[i] == '\"')
+			startIndex -= 1;
+		partitionedOutput.Add(ExtractNarration(text, startIndex));
+		// }
+	}
+	return partitionedOutput;
 }
+
+FString AAlienManager::ExtractNarration(FString text, int32 &startIndex)
+{
+	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
+		ESearchDir::Type::FromStart, startIndex) - 1;
+	int32 exerptLength = endIndex - startIndex + 1;
+	FString exerpt = text.Mid(startIndex, exerptLength);
+	UE_LOG(LogTemp, Warning, TEXT("Index: %i"), startIndex);
+	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
+	startIndex += exerpt.Len();
+	
+	return exerpt;
+}
+
+// FString AAlienManager::ExtractDialogue(FString text, int32 &startIndex)
+// {
+// 	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
+// 	ESearchDir::Type::FromStart, startIndex + 1);
+// 	int32 exerptLength = endIndex - startIndex + 1;
+// 	FString exerpt = text.Mid(startIndex, exerptLength);
+// 	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
+// 	startIndex += exerptLength;
+// 	return exerpt;
+// }
 
 FString AAlienManager::ManageAlien(FString playerTextInput)
 {
