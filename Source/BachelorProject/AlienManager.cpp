@@ -66,8 +66,10 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 bool AAlienManager::FindQuote(FString text, int index)
 {
 	for (int i = index; i < text.Len(); i++)
-		if(text[i] == '\"')
+	{
+		if(text[i] == '\n' && text[i+1] == '\"')
 			return true;
+	}
 	return false;
 }
 
@@ -75,66 +77,42 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 {
 	//Based on this tutorial:
 	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
-			
-	bool quote = false;
-
+	int startIndex = 0, endIndex = 0, exerptLength = 0;
+	bool quote = FindQuote(text, startIndex);
+	FString exerpt;
 	TArray<FString> partitionedOutput;
-	if (!FindQuote(text, 0))
+	for(int i = 0; i < text.Len(); i = startIndex)
 	{
-		partitionedOutput.Add(text);
-		//UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *text);
-		return partitionedOutput;
+		//UE_LOG(LogTemp, Warning, TEXT("Index: %i"), startIndex);
+		if (FindQuote(text, startIndex))
+		{
+			endIndex = text.Find("\n", ESearchCase::IgnoreCase,
+		ESearchDir::Type::FromStart, startIndex + 1);
+			
+			exerptLength = endIndex - startIndex + 1;
+			exerpt = text.Mid(startIndex, exerptLength);
+	
+			// UE_LOG(LogTemp, Warning, TEXT("Size: %i"), exerptLength);
+			// UE_LOG(LogTemp, Warning, TEXT("Index: %i"), endIndex);
+			UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
+			startIndex += exerptLength;
+		}
+		else
+			break;
 	}
 	
-	int32 startIndex = 0;
-	int32 endIndex = 0;
-
-	if (text[0] == '\"')
-		quote = true;
-	else
-	{
-		partitionedOutput.Add(ExtractNarration(text, startIndex));
-	}
+	endIndex = text.Len() - 1;
+	exerptLength = endIndex - startIndex + 1;
+	exerpt = text.Mid(startIndex, exerptLength);
 	
-	for (int i = startIndex; i < text.Len(); i = startIndex)
-	{
-		// if (quote)
-		// {
-		// 	ExtractNarration(text, startIndex);
-		// }
-		// else
-		// {
-		if (text[i] == '\"')
-			startIndex -= 1;
-		partitionedOutput.Add(ExtractNarration(text, startIndex));
-		// }
-	}
+	// UE_LOG(LogTemp, Warning, TEXT("Size: %i"), exerptLength);
+	// UE_LOG(LogTemp, Warning, TEXT("Index: %i"), endIndex);
+	// UE_LOG(LogTemp, Warning, TEXT("Total size: %i"), text.Len());
+	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
+	partitionedOutput.Add(exerpt);
+	
 	return partitionedOutput;
 }
-
-FString AAlienManager::ExtractNarration(FString text, int32 &startIndex)
-{
-	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
-		ESearchDir::Type::FromStart, startIndex) - 1;
-	int32 exerptLength = endIndex - startIndex + 1;
-	FString exerpt = text.Mid(startIndex, exerptLength);
-	UE_LOG(LogTemp, Warning, TEXT("Index: %i"), startIndex);
-	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
-	startIndex += exerpt.Len();
-	
-	return exerpt;
-}
-
-// FString AAlienManager::ExtractDialogue(FString text, int32 &startIndex)
-// {
-// 	int32 endIndex = text.Find("\"", ESearchCase::IgnoreCase,
-// 	ESearchDir::Type::FromStart, startIndex + 1);
-// 	int32 exerptLength = endIndex - startIndex + 1;
-// 	FString exerpt = text.Mid(startIndex, exerptLength);
-// 	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
-// 	startIndex += exerptLength;
-// 	return exerpt;
-// }
 
 FString AAlienManager::ManageAlien(FString playerTextInput)
 {

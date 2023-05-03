@@ -106,8 +106,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	TArray<FString> SplitOutput(FString text);
-	FString ExtractNarration(FString text, int32 &startIndex);
-	//FString ExtractDialogue(FString text, int32 &startIndex);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	FString ManageAlien(FString playerInput);
