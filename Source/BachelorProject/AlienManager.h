@@ -96,17 +96,25 @@ public:
 	void SetAlien(FAlienList aliensIn);
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	void SetupLevelPhase(
-		//TArray<FString> newCorrectInputs, FString newCorrectOutput,
-		//TArray<FString> newSpecialInputs, TArray<FString> newSpecialOutputs,
-		//FString newDefaultWrongOutput,int newCorrectAnim,
-		//TArray<int> newSpecialAnim, int newWrongAnim
-		FAlienData alienDataIn
-		);
+	void SetupLevelPhase(FAlienData alienDataIn);
 	
 	UPROPERTY(BluePrintReadWrite)
 	FString alienTextOutput;
 
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	bool FindQuote(FString text, int index);
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString upperAlphabet = lowerAlphabet.ToUpper();
+	
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	FText ExcludeCharacters(FText text);
+
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	TArray<FString> SplitOutput(FString text);
+	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	FString ManageAlien(FString playerInput);
 	
