@@ -74,6 +74,25 @@ bool AAlienManager::FindQuote(FString text, int index)
 	return false;
 }
 
+FText AAlienManager::ExcludeCharacters(FText text)
+{
+	FString newString = "", tempString = text.ToString();
+	//Prevents leading spaces and crashing from a negative index
+	tempString = tempString.TrimStart(); 
+	for (int i = 0; i < tempString.Len(); i++)
+	{	//Prevents consecutive spaces
+		if(tempString[i] == ' ' && tempString[i-1] != ' ') 
+				newString += tempString[i];
+		else
+			for (int j = 0; j < lowerAlphabet.Len(); j++)
+				if (lowerAlphabet[j] == tempString[i] || upperAlphabet[j] == tempString[i])
+					newString += tempString[i];
+	}
+	FText out = FText::FromString(newString);
+	//UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *out.ToString());
+	return out;
+}
+
 TArray<FString> AAlienManager::SplitOutput(FString text)
 {
 	//Based on this tutorial:

@@ -104,6 +104,14 @@ public:
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	bool FindQuote(FString text, int index);
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString upperAlphabet = lowerAlphabet.ToUpper();
+	
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	FText ExcludeCharacters(FText text);
+
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	TArray<FString> SplitOutput(FString text);
 	
