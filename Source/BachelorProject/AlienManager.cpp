@@ -79,7 +79,6 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 	//Based on this tutorial:
 	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
 	int startIndex = 0, endIndex = 0, exerptLength = 0;
-	bool quote = FindQuote(text, startIndex);
 	FString exerpt;
 	TArray<FString> partitionedOutput;
 	for(int i = 0; i < text.Len(); i = startIndex)
