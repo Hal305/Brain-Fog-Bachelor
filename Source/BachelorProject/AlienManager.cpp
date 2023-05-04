@@ -63,29 +63,18 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 	return false;
 }
 
-bool AAlienManager::FindQuote(FString text, int index)
-{
-	for (int i = index; i < text.Len() - 1; i++)
-	{
-		if(text[i] == '\n' && text[i+1] == '\"'
-			|| text[i] == '\"' && text[i+1] == '\n')
-			return true;
-	}
-	return false;
-}
-
 TArray<FString> AAlienManager::SplitOutput(FString text)
 {
 	//Based on this tutorial:
 	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
 	int startIndex = 0, endIndex = 0, exerptLength = 0;
-	bool quote = FindQuote(text, startIndex);
 	FString exerpt;
 	TArray<FString> partitionedOutput;
 	for(int i = 0; i < text.Len(); i = startIndex)
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("Index: %i"), startIndex);
-		if (FindQuote(text, startIndex))
+		if (text[i] == '\n' && text[i+1] == '\"'
+			|| text[i] == '\"' && text[i+1] == '\n')
 		{
 			endIndex = text.Find("\n", ESearchCase::IgnoreCase,
 		ESearchDir::Type::FromStart, startIndex + 1);

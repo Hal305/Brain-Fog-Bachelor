@@ -102,9 +102,6 @@ public:
 	FString alienTextOutput;
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	bool FindQuote(FString text, int index);
-
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	TArray<FString> SplitOutput(FString text);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
