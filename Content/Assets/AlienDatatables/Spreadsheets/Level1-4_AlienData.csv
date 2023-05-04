@@ -1,0 +1,4 @@
+﻿Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
+1,The Yoppoppo gives you a quick nod of appreciation and rushes off somewhere!,"(""Babo"")","(""Stybo"")","(""The Yoppoppo shakes its head.\n\""Weh, Yoppoppo Peepo Stybo! Weh Skroog Stybo!\""\nLooks like that was the wrong answer!"")","The Yoppoppo looks frustrated. 
+""Wadda? Weh, Weh! Skroog! Weddi Skroog?""",0,0,0
+,,,,,,,,
