@@ -116,8 +116,8 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 		}
 	}
 	
-	// for (int i = 0; i < partitionedOutput.Num(); i++)
-	// 	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *partitionedOutput[i]);
+	 for (int i = 0; i < partitionedOutput.Num(); i++)
+	 	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *partitionedOutput[i]);
 	
 	return partitionedOutput;
 }
