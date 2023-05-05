@@ -63,17 +63,6 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 	return false;
 }
 
-bool AAlienManager::FindQuote(FString text, int index)
-{
-	for (int i = index; i < text.Len() - 1; i++)
-	{
-		if(text[i] == '\n' && text[i+1] == '\"'
-			|| text[i] == '\"' && text[i+1] == '\n')
-			return true;
-	}
-	return false;
-}
-
 FText AAlienManager::ExcludeCharacters(FText text)
 {
 	FString newString = "", tempString = text.ToString();
@@ -88,6 +77,17 @@ FText AAlienManager::ExcludeCharacters(FText text)
 				if (lowerAlphabet[j] == tempString[i] || upperAlphabet[j] == tempString[i])
 					newString += tempString[i];
 	}
+	
+	if (!newString.IsEmpty())
+	{	//Capitalising every first letter in the text input
+		//This check might cause crashes, comment it out or remove it if so.
+		newString = newString.ToLower();
+		TCHAR c = newString[0];
+		FString upperString = " "; upperString[0] = c; upperString = upperString.ToUpper();
+		newString[0] = upperString[0];
+	}	//Alternatively consider capitalising every letter.
+	//newString = newString.ToUpper();
+	
 	FText out = FText::FromString(newString);
 	//UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *out.ToString());
 	return out;
@@ -97,40 +97,51 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 {
 	//Based on this tutorial:
 	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
-	int startIndex = 0, endIndex = 0, exerptLength = 0;
+	int startIndex = 0, endIndex = 0;
 	FString exerpt;
 	TArray<FString> partitionedOutput;
 	for(int i = 0; i < text.Len(); i = startIndex)
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("Index: %i"), startIndex);
 		if (FindQuote(text, startIndex))
-		{
-			endIndex = text.Find("\n", ESearchCase::IgnoreCase,
-		ESearchDir::Type::FromStart, startIndex + 1);
-			
-			exerptLength = endIndex - startIndex + 1;
-			exerpt = text.Mid(startIndex, exerptLength);
-	
-			// UE_LOG(LogTemp, Warning, TEXT("Size: %i"), exerptLength);
-			// UE_LOG(LogTemp, Warning, TEXT("Index: %i"), endIndex);
-			UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
-			startIndex += exerptLength;
-		}
+			partitionedOutput.Add(AddExerpt(text, startIndex, endIndex));
 		else
+		{
+			partitionedOutput.Add(AddExerpt(text, startIndex, endIndex));
+			endIndex = text.Len() - 1;
+			int exerptLength = endIndex - startIndex + 1;
+			exerpt = text.Mid(startIndex, exerptLength).TrimChar('\n');
+			partitionedOutput.Add(exerpt);
 			break;
+		}
 	}
 	
-	endIndex = text.Len() - 1;
-	exerptLength = endIndex - startIndex + 1;
-	exerpt = text.Mid(startIndex, exerptLength);
-	
-	// UE_LOG(LogTemp, Warning, TEXT("Size: %i"), exerptLength);
-	// UE_LOG(LogTemp, Warning, TEXT("Index: %i"), endIndex);
-	// UE_LOG(LogTemp, Warning, TEXT("Total size: %i"), text.Len());
-	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *exerpt);
-	partitionedOutput.Add(exerpt);
+	// for (int i = 0; i < partitionedOutput.Num(); i++)
+	// 	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *partitionedOutput[i]);
 	
 	return partitionedOutput;
+}
+
+bool AAlienManager::FindQuote(FString text, int index)
+{
+	for (int i = index; i < text.Len() - 1; i++)
+	{
+		if(text[i] == '\n' && text[i+1] == '\"'
+			|| text[i] == '\"' && text[i+1] == '\n')
+				return true;
+	}
+	return false;
+}
+
+FString AAlienManager::AddExerpt(FString text, int& startIndex, int& endIndex)
+{
+	endIndex = text.Find("\n", ESearchCase::IgnoreCase,
+		ESearchDir::Type::FromStart, startIndex + 1);
+	int exerptLength = endIndex - startIndex + 1;
+	FString exerpt = text.Mid(startIndex, exerptLength);
+	exerpt = exerpt.TrimChar('\n');
+	startIndex += exerptLength;
+	return exerpt;
 }
 
 FString AAlienManager::ManageAlien(FString playerTextInput)

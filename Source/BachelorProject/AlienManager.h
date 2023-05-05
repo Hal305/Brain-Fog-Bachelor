@@ -101,9 +101,6 @@ public:
 	UPROPERTY(BluePrintReadWrite)
 	FString alienTextOutput;
 
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	bool FindQuote(FString text, int index);
-
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -114,6 +111,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	TArray<FString> SplitOutput(FString text);
+	
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	bool FindQuote(FString text, int index);
+	
+	FString AddExerpt(FString text, int &startIndex, int &endIndex);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	FString ManageAlien(FString playerInput);
