@@ -95,53 +95,34 @@ FText AAlienManager::ExcludeCharacters(FText text)
 
 TArray<FString> AAlienManager::SplitOutput(FString text)
 {
-	//Based on this tutorial:
-	//https://jiyuututorials.wixsite.com/home/substring-fstring-operator
-	int startIndex = 0, endIndex = 0;
-	FString exerpt;
-	TArray<FString> partitionedOutput;
-	for(int i = 0; i < text.Len(); i = startIndex)
-	{
-		//UE_LOG(LogTemp, Warning, TEXT("Index: %i"), startIndex);
-		if (FindQuote(text, startIndex))
-			partitionedOutput.Add(AddExerpt(text, startIndex, endIndex));
-		else
-		{
-			partitionedOutput.Add(AddExerpt(text, startIndex, endIndex));
-			endIndex = text.Len() - 1;
-			int exerptLength = endIndex - startIndex + 1;
-			exerpt = text.Mid(startIndex, exerptLength).TrimChar('\n');
-			partitionedOutput.Add(exerpt);
+	TArray<FString> outputSnippets;
+	int32 startIndex = 0, endIndex = 0, snippetLength = text.Len();
+	while(text.Contains("\n"))
+	{	//Risky c++ while loop, handle code with care
+		endIndex = text.Find("\n");
+		FString snippet = text.Left(endIndex).TrimChar('\n');
+		UE_LOG(LogTemp, Warning, TEXT(": %s"), *snippet);
+		snippet.TrimStartAndEnd().Shrink();
+		outputSnippets.Add(snippet);
+		text = text.RightChop(endIndex).TrimStartAndEnd();
+		//UE_LOG(LogTemp, Warning, TEXT(": %s"), *text);
+		//This check should guarantee the loop to always exit
+		if(!text.Contains("\n") || !text.Contains("\""))
 			break;
-		}
 	}
-	
-	 for (int i = 0; i < partitionedOutput.Num(); i++)
-	 	UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *partitionedOutput[i]);
-	
-	return partitionedOutput;
-}
+	text.TrimStartAndEnd().Shrink();
+		UE_LOG(LogTemp, Warning, TEXT(": %s"), *text);
+	 	outputSnippets.Add(text);	
 
-bool AAlienManager::FindQuote(FString text, int index)
-{
-	for (int i = index; i < text.Len() - 1; i++)
-	{
-		if(text[i] == '\n' && text[i+1] == '\"'
-			|| text[i] == '\"' && text[i+1] == '\n')
-				return true;
-	}
-	return false;
-}
-
-FString AAlienManager::AddExerpt(FString text, int& startIndex, int& endIndex)
-{
-	endIndex = text.Find("\n", ESearchCase::IgnoreCase,
-		ESearchDir::Type::FromStart, startIndex + 1);
-	int exerptLength = endIndex - startIndex + 1;
-	FString exerpt = text.Mid(startIndex, exerptLength);
-	exerpt = exerpt.TrimChar('\n');
-	startIndex += exerptLength;
-	return exerpt;
+	//Maybe I didn't have to write my own splitting function after all...
+	//Is an O(N^2), might be less resource efficient, but works perfectly
+	//This is currently called in the HUD blueprint, in UpdateChatLogALien
+	//text.ParseIntoArrayLines(outputSnippets, true);
+	
+	// for (int i = 0; i< outputSnippets.Num(); i++)
+	// 	UE_LOG(LogTemp, Warning, TEXT(": %s"), *outputSnippets[i]);
+		
+	return outputSnippets;
 }
 
 FString AAlienManager::ManageAlien(FString playerTextInput)

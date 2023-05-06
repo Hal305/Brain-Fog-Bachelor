@@ -113,11 +113,6 @@ public:
 	TArray<FString> SplitOutput(FString text);
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	bool FindQuote(FString text, int index);
-	
-	FString AddExerpt(FString text, int &startIndex, int &endIndex);
-	
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	FString ManageAlien(FString playerInput);
 	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
