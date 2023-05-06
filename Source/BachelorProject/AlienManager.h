@@ -124,4 +124,10 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite)
 	bool levelDone = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	int AnimToPlay = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	int CurrentSpecial = 0;
 };
