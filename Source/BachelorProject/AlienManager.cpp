@@ -48,6 +48,7 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 		{
 			alienOutput = alienData.correctOutput;
 			phaseCount++;
+			AnimToPlay = 1;
 			return true;
 		}
 	}
@@ -56,10 +57,13 @@ bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutp
 		if (playerInput.ToLower().Equals(alienData.specialInputs[i].ToLower()))
 		{
 			alienOutput = alienData.specialOutputs[i];
+			AnimToPlay = 3;
+			CurrentSpecial = i;
 			return false;
 		}
 	}
 	alienOutput = alienData.defaultWrongOutput;
+	AnimToPlay = 2;
 	return false;
 }
 
