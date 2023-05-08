@@ -116,7 +116,7 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 	}
 	text.TrimStartAndEnd().Shrink();
 		UE_LOG(LogTemp, Warning, TEXT(": %s"), *text);
-	 	outputSnippets.Add(text);	
+	 	outputSnippets.Add(text);
 
 	//Maybe I didn't have to write my own splitting function after all...
 	//Is an O(N^2), might be less resource efficient, but works perfectly
