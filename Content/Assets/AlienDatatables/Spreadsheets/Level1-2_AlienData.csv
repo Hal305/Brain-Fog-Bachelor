@@ -1,9 +1,11 @@
-﻿Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
+Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
 1,"The Yoppoppo points at the warp gate that it is about to head through.
 ""Wadda Shwoom?""
 Looks like it wants to know what something is?","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.,0,0,0
-2,"The Yoppoppo points worriedly at the warp gate that it is about to head through.
-""Shwoom Yipyipyip Blooba?""
+2,"The Yoppoppo nods in appreciation.
+""Prako.""
+Then it looks at the warp gate that it is about to head through with a worried expression.
+""Shwoom Blooba?""
 You look at the warp gate, and it looks normal and functional.","(""Shwoom Yipyipyip"",""Yipyipyip"")",,,"The Yoppoppo looks confused. 
 ""Wadda?"" 
 The alien points at the warp gate again.

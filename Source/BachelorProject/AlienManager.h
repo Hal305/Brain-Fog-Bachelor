@@ -27,6 +27,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
 	FString startingOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
+	int startingAnimation;
 	
 };
 
