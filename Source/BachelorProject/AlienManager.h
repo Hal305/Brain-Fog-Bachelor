@@ -104,9 +104,9 @@ public:
 	UPROPERTY(BluePrintReadWrite)
 	FString alienTextOutput;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)
 	FString lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)
 	FString upperAlphabet = lowerAlphabet.ToUpper();
 	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))

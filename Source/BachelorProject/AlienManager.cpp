@@ -40,7 +40,6 @@ void AAlienManager::SetAlien(FAlienList aliensIn)
 
 bool AAlienManager::CheckPlayerTextInput(FString playerInput, FString& alienOutput)
 {
-	playerInput = playerInput.TrimStart();
 	playerInput =  playerInput.TrimEnd();
 	for (int i = 0; i < alienData.correctInputs.Num(); i++)
 	{
@@ -81,16 +80,17 @@ FText AAlienManager::ExcludeCharacters(FText text)
 				if (lowerAlphabet[j] == tempString[i] || upperAlphabet[j] == tempString[i])
 					newString += tempString[i];
 	}
-	
-	if (!newString.IsEmpty())
-	{	//Capitalising every first letter in the text input
-		//This check might cause crashes, comment it out or remove it if so.
-		newString = newString.ToLower();
-		TCHAR c = newString[0];
-		FString upperString = " "; upperString[0] = c; upperString = upperString.ToUpper();
-		newString[0] = upperString[0];
-	}	//Alternatively consider capitalising every letter.
-	//newString = newString.ToUpper();
+
+	//Capitalising every first letter in the text input
+	// if (!newString.IsEmpty())
+	// {
+	// 	//This check might cause crashes, comment it out or remove it if so.
+	// 	newString = newString.ToLower();
+	// 	TCHAR c = newString[0];
+	// 	FString upperString = " "; upperString[0] = c; upperString = upperString.ToUpper();
+	// 	newString[0] = upperString[0];
+	// }	//Alternatively consider capitalising every letter.
+	newString = newString.ToUpper();
 	
 	FText out = FText::FromString(newString);
 	//UE_LOG(LogTemp, Warning, TEXT("Exerpt: %s"), *out.ToString());
@@ -104,7 +104,7 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 	while(text.Contains("\n"))
 	{	//Risky c++ while loop, handle code with care
 		endIndex = text.Find("\n");
-		FString snippet = text.Left(endIndex).TrimChar('\n');
+		FString snippet = text.Left(endIndex).TrimChar('\r').TrimChar('\n');
 		UE_LOG(LogTemp, Warning, TEXT(": %s"), *snippet);
 		snippet.TrimStartAndEnd().Shrink();
 		outputSnippets.Add(snippet);
@@ -115,6 +115,7 @@ TArray<FString> AAlienManager::SplitOutput(FString text)
 			break;
 	}
 	text.TrimStartAndEnd().Shrink();
+	text = text.TrimChar('\r').TrimChar('\n');
 		UE_LOG(LogTemp, Warning, TEXT(": %s"), *text);
 	 	outputSnippets.Add(text);
 
