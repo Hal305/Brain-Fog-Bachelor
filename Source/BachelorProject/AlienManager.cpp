@@ -33,7 +33,7 @@ void AAlienManager::Tick(float DeltaTime)
 void AAlienManager::SetAlien(FAlienList aliensIn)
 {
 	aliens = aliensIn;
-	
+	aliens.alienData = aliensIn.alienData.LoadSynchronous();
 	alienClone = UGameplayStatics::GetActorOfClass(GetWorld(), AAlienActor::StaticClass());
 	currentAlien = Cast<AAlienActor>(alienClone);
 }
