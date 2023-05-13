@@ -3,11 +3,11 @@ Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutpu
 ""Yoppoppo!""
 It then points at you and tilts its head.
 ""Wadda?""
-It seems to be wondering what you are.","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.,0,0,0
+It seems to be wondering what you are.","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.,3,0,2
 2,"The Yoppoppo nods in understanding.
 ""Prako!""
 It flies away through the warp gate.
 Seems that was all it wanted to know!","(""Belbo"")","(""Yoppoppo"")","(""The Yoppoppo looks shocked!\n\""Wadda?! Yoppoppo? Weh!\"" \nThat doesn\'t seem to be the right response... Give it another go!"")","The Yoppoppo looks confused.
 ""Wadda?""
 Then it points at you again, and repeats itself.
-""Wadda?""",0,0,0
+""Wadda?""",7,12,2

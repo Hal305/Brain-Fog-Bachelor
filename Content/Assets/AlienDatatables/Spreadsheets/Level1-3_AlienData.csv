@@ -1,10 +1,10 @@
 Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
 1,"The Yoppoppo blushes and smiles.
 ""Belbo... Gublig...""
-Whatever it said, there's probably an expected polite reply!","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.,0,0,0
+Whatever it said, there's probably an expected polite reply!","(""Waiwai"",""Waiwai Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard polite response.,13,0,2
 2,"The Yoppoppo gives you a grin, and then waits a moment before prompting you for another reply.
 ""Yoppoppo... Gublig...?""","(""Prako"",""Prako Yoppoppo"")","(""Yeh"",""Belbo Gublig"",""Yeh Belbo Gublig"",""Yoppoppo Gublig"",""Gublig Yoppoppo"",""Weh"")","(""The Yoppoppo squints at you, but doesn\'t say anything.\nLooks like you\'ve said something awkward! Better try a more polite response."",""The Yoppoppo squints at you, but doesn\'t say anything.\nLooks like you\'ve said something awkward! Better try a more polite response."",""The Yoppoppo squints at you, but doesn\'t say anything.\nLooks like you\'ve said something awkward! Better try a more polite response."",""The Yoppoppo shakes its head.\n\""Weh, Weh! Belbo Gublig!\""\nLooks like this sort of exchange has a proper order to things! No skipping ahead here, you\'ll need to give the appropriate reply first!"",""The Yoppoppo shakes its head.\n\""Weh, Weh! Belbo Gublig!\""\nLooks like this sort of exchange has a proper order to things! No skipping ahead here, you\'ll need to give the appropriate reply first!"",""The Yoppoppo looks surprised!\n\""Weh? Yeh! Belbo Gublig!\""\nSeems that wasn\'t what it was expecting to hear..."")","The Yoppoppo appears to be smiling and ignoring whatever you just said.
-""Belbo.... Gublig...""",0,0,0
+""Belbo.... Gublig...""",9,"(0,0,0,1,1,12)",0
 3,The Yoppoppo giggles and flies through the warp gate!,"(""Yeh"",""Yeh Gublig"",""Yoppoppo Gublig"",""Yeh Yoppoppo Gublig"")","(""Weh"",""Weh Gublig"")","(""The Yoppoppo looks to be on the verge of tears!\n\""Weh Gublig...?!\""\nYou\'d better give that another go…"",
 ""The Yoppoppo looks to be on the verge of tears!\n\""Weh Gublig...?!\""\nYou\'d better give that another go…"",)","The Yoppoppo smiles and appears to ignore whatever you just said.
-""Yoppoppo.... Gublig...?""",0,0,0
+""Yoppoppo.... Gublig...?""",9,-12.12,0

@@ -20,7 +20,7 @@ public:
 	TSoftObjectPtr<USkeletalMesh> alienMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
-	TSoftObjectPtr<UAnimBlueprint> alienAnimBP;
+	int alienAnimBP;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
 	TSoftObjectPtr<UDataTable> alienData;

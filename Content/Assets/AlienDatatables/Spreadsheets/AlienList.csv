@@ -1,11 +1,11 @@
 Alien,AlienMesh,AlienAnimBP,AlienData,StartingOutput,StartingAnimation
-1,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""","""AnimBlueprint'/Game/Assets/3D/Yoppoppo_Generic/AnimationBP_Generic.AnimationBP_Generic'""","""DataTable'/Game/Assets/AlienDatatables/Level1-1_AlienData.Level1-1_AlienData'""","A Yoppoppo traveler arrives. It waves at you.
-""Waiwai!""",0
-2,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""","""AnimBlueprint'/Game/Assets/3D/Yoppoppo_Generic/AnimationBP_Generic.AnimationBP_Generic'""","""DataTable'/Game/Assets/AlienDatatables/Level1-2_AlienData.Level1-2_AlienData'""","A Yoppoppo traveler arrives and waves at you.
-""Waiwai, Belbo!""",0
-3,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""","""AnimBlueprint'/Game/Assets/3D/Yoppoppo_Generic/AnimationBP_Generic.AnimationBP_Generic'""","""DataTable'/Game/Assets/AlienDatatables/Level1-3_AlienData.Level1-3_AlienData'""","A Yoppoppo traveler arrives. It blushes and waves at you.
-""Waiwai, Belbo...""",0
-4,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""","""AnimBlueprint'/Game/Assets/3D/Yoppoppo_Generic/AnimationBP_Generic.AnimationBP_Generic'""","""DataTable'/Game/Assets/AlienDatatables/Level1-4_AlienData.Level1-4_AlienData'""","A Yoppoppo traveler arrives, looking somewhat pained. It seems to be in a rush!
-""Skroog... Weddi Skroog?""",0
-5,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""","""AnimBlueprint'/Game/Assets/3D/Yoppoppo_Generic/AnimationBP_Generic.AnimationBP_Generic'""","""DataTable'/Game/Assets/AlienDatatables/Level1-5_AlienData.Level1-5_AlienData'""","A Yoppoppo traveler arrives. It squints at you.
+1,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""",0,"""DataTable'/Game/Assets/AlienDatatables/Level1-1_AlienData.Level1-1_AlienData'""","A Yoppoppo traveler arrives. It waves at you.
+""Waiwai!""",6
+2,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""",1,"""DataTable'/Game/Assets/AlienDatatables/Level1-2_AlienData.Level1-2_AlienData'""","A Yoppoppo traveler arrives and waves at you.
+""Waiwai, Belbo!""",6
+3,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""",2,"""DataTable'/Game/Assets/AlienDatatables/Level1-3_AlienData.Level1-3_AlienData'""","A Yoppoppo traveler arrives. It blushes and waves at you.
+""Waiwai, Belbo...""",6
+4,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""",3,"""DataTable'/Game/Assets/AlienDatatables/Level1-4_AlienData.Level1-4_AlienData'""","A Yoppoppo traveler arrives, looking somewhat pained. It seems to be in a rush!
+""Skroog... Weddi Skroog?""",11
+5,"""SkeletalMesh'/Game/Assets/3D/Yoppoppo_Generic/Mesh_Generic.Mesh_Generic'""",4,"""DataTable'/Game/Assets/AlienDatatables/Level1-5_AlienData.Level1-5_AlienData'""","A Yoppoppo traveler arrives. It squints at you.
 ""Waiwai, Doob Belbo.""",0

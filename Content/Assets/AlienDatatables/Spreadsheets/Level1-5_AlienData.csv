@@ -1,7 +1,7 @@
-﻿Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
+Phase,CorrectOutput,CorrectInputs,SpecialInputs,SpecialOutputs,DefaultWrongOutput,CorrectAnim,SpecialAnim,WrongAnim
 1,"The Yoppoppo looks angry and starts ranting!
 ""Doob Shwoom! Blooba Belbo!""
-It's not quite clear what's wrong, but maybe you should calm it down somehow?","(""Waiwai"",""Waiwai Yoppoppo"",""Waiwai Doob Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard response (polite or not).,0,0,0
+It's not quite clear what's wrong, but maybe you should calm it down somehow?","(""Waiwai"",""Waiwai Yoppoppo"",""Waiwai Doob Yoppoppo"")",,,The Yoppoppo squints at you. It looks like it's expecting a standard response (polite or not).,12,0,0
 2,"Looks like the Yoppoppo has calmed down a bit but still doesn't look happy.
 ""Belbo Grok Weh.""
 It thinks for a bit and gives you a smug smile.
@@ -9,10 +9,10 @@ It thinks for a bit and gives you a smug smile.
 ""The Yoppoppo looks even more angry! Looks like you\'re just making things worse! Try saying something more apologetic, perhaps?"",
 ""The Yoppoppo looks even more angry! Looks like you\'re just making things worse! Try saying something more apologetic, perhaps?"",
 ""The Yoppoppo looks even more angry! Looks like you\'re just making things worse! Try saying something more apologetic, perhaps?"")","The Yoppoppo seems to be completely ignoring you as it continues to rant and rave.
-""Doob, Doob, Doob! Blooba Belbo! Doob Shwoom!""",0,0,0
+""Doob, Doob, Doob! Blooba Belbo! Doob Shwoom!""",8,"(12,12,12,12)",12
 3,"The Yoppoppo looks genuinely shocked to hear you answer correctly.
 ""Wadda?! Belbo Weh Doob?!""
 Before you have a chance to prove yourself further, the Yoppoppo leaves in a huff.","(""Yipyipyipyip"")","(""Yip"",""Yipyip"",""Yipyipyip"")","(""The Yoppoppo guffaws at your reply.\n\""Doob Belbo! Grok Weh!\""\nYou probably want to try that again..."",
 ""The Yoppoppo guffaws at your reply.\n\""Doob Belbo! Grok Weh!\""\nYou probably want to try that again..."",
 ""The Yoppoppo guffaws at your reply.\n\""Doob Belbo! Grok Weh!\""\nYou probably want to try that again..."")","The Yoppoppo continues to give you a smug smile, ignoring whatever you just said.
-""Wadda Blooba, Belbo? Weh Grok? Belbo Doob?""",0,0,0
+""Wadda Blooba, Belbo? Weh Grok? Belbo Doob?""",12,"(13,13,13)",0
