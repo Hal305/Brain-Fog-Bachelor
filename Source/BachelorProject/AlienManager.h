@@ -29,7 +29,7 @@ public:
 	FString startingOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AlienData")
-	int startingAnimation;
+	int startingAnimation = 0;
 	
 };
 
@@ -55,13 +55,13 @@ public:
 	FString defaultWrongOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
-	int correctAnim;
+	int correctAnim = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
 	TArray<int> specialAnim;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reactions")
-	int wrongAnim;
+	int wrongAnim = 0;
 };
 	
 UCLASS()
@@ -93,13 +93,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	int maxPhases;
 	
-	bool CheckPlayerTextInput(FString playerInput, FString &alienOutput);
-	
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	void SetAlien(FAlienList aliensIn);
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	void SetupLevelPhase(FAlienData alienDataIn);
+
+	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
+	FString ManageAlienResponse(FString playerInput);
 	
 	UPROPERTY(BluePrintReadWrite)
 	FString alienTextOutput;
@@ -114,9 +115,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
 	TArray<FString> SplitOutput(FString text);
-	
-	UFUNCTION(BlueprintCallable, Meta = (DefaultToSelf))
-	FString ManageAlien(FString playerInput);
 	
 	UPROPERTY(EditAnywhere, BluePrintReadWrite)
 	class AAlienActor* currentAlien;
